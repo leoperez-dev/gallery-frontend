@@ -22,6 +22,7 @@ Its's made using:
 - Clone repository
 - Install dependencies `npm install`
 - Create a .env file specifying the backend url, (see .example.env)
+- run `npm run build`
 
 ## Commands
 - start dev server `npm run dev`
