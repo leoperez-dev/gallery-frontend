@@ -18,6 +18,7 @@ const GalleryFilterBar: React.FC = () => {
 
     const showSort = filters.section === 'hot' || filters.section === 'user';
     const showWindow = filters.section === 'top';
+    const showRising = filters.section === 'user';
 
     return (
         <div className={styles.GalleryFilterBar}>
@@ -34,6 +35,7 @@ const GalleryFilterBar: React.FC = () => {
                     <GallerySortSelect
                         onChange={value => dispatch(setSort(value))}
                         value={filters.sort}
+                        showRising={showRising}
                     />
                 )}
                 {showWindow && (

@@ -16,7 +16,7 @@ const GalleryThumbnail = (
 
     return (
         <GalleryItemViewer item={item}>
-            <button className={styles.container}>
+            <button className={styles.GalleryVideoPreview}>
                 <div className={styles.thumbnail} key={id}>
                     {videoFormats.includes(type) ? (
                         <GalleryVideoPreview

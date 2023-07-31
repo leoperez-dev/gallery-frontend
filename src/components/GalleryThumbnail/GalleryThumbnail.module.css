@@ -1,4 +1,4 @@
-.container {
+.GalleryVideoPreview {
     display: flex;
     flex-direction: column;
     background-color: #111;
@@ -11,11 +11,11 @@
     cursor: pointer;
 }
 
-.container:focus {
-    outline: 2px slateblue solid;
-    box-shadow: 2px 2px 4px slateblue;
+.GalleryVideoPreview:focus {
+    outline: 2px var(--primary) solid;
+    box-shadow: 2px 2px 4px var(--primary);
 }
-.container:hover {
+.GalleryVideoPreview:hover {
     background-color: #000;
 }
 

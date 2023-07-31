@@ -4,10 +4,12 @@ import { Select, Option } from '../Select/Select';
 export interface GallerySortSelectProps {
     onChange: (value: GallerySortFilter) => void;
     value?: GallerySortFilter;
+    showRising?: boolean;
 }
 
 const GallerySortSelect: React.FC<GallerySortSelectProps> = ({
     value,
+    showRising = false,
     onChange,
 }) => {
     return (
@@ -18,7 +20,7 @@ const GallerySortSelect: React.FC<GallerySortSelectProps> = ({
             <Option value="viral">Viral</Option>
             <Option value="top">Top</Option>
             <Option value="time">Time</Option>
-            <Option value="rising">Rising</Option>
+            {showRising && <Option value="rising">Rising</Option>}
         </Select>
     );
 };

@@ -89,7 +89,7 @@ const GalleryItemViewer: React.FC<GalleryItemViewerProps> = ({
                             className={styles.CloseButton}
                             aria-label="Close"
                         >
-                            <Cross2Icon />
+                            <Cross2Icon height={20} width={20} />
                         </button>
                     </Dialog.Close>
                 </Dialog.Content>

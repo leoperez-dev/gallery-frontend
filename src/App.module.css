@@ -1,0 +1,8 @@
+.Title {
+    font-weight: 800;
+    color: var(--primary);
+}
+.Subtitle {
+    font-weight: normal;
+    font-size: 18px;
+}
