@@ -1,28 +1,28 @@
 .Gallery {
-	max-width: 1600px;
-	margin: 0 auto;
-	gap: 15px;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 15px;
 }
 
 @media (min-width: 1200px) {
-	.Gallery {
-		column-count: 4;
-	}
+    .Gallery {
+        column-count: 4;
+    }
 }
 @media (max-width: 1200px) {
-	.Gallery {
-		column-count: 3;
-	}
+    .Gallery {
+        column-count: 3;
+    }
 }
 
 @media (max-width: 768px) {
-	.Gallery {
-		column-count: 2;
-	}
+    .Gallery {
+        column-count: 2;
+    }
 }
 
 @media (max-width: 640px) {
-	.Gallery {
-		column-count: 1;
-	}
+    .Gallery {
+        column-count: 1;
+    }
 }
