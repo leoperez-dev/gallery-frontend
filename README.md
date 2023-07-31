@@ -2,6 +2,13 @@
 
 This is a simple SPA that connects to a [backend](https://github.com/leoperez-dev/gallery-backend) in order to fetch the images.
 
+Its's made using:
+- Vite + React + Typescript
+- styles using plain css modules for simplicity.
+- Redux Toolkit for state management
+- ESlint for code linting
+- Prettier for code formatting
+
 [Visit deployed site](https://gallery-frontend.onrender.com/)
 
 ## Features
@@ -24,6 +31,7 @@ This is a simple SPA that connects to a [backend](https://github.com/leoperez-de
 
 ## TODO
 A list of some improvements to make given the time
+- improve ui/design using a design system
 - implement a proper masonry layout
 - implement infinite scroll pagination with a virtualized list
 - implement skeleton loading for images
