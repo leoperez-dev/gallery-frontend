@@ -15,7 +15,7 @@ const GalleryFilterBar: React.FC = () => {
 	const showWindow = filters.section === 'top';
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.GalleryFilterBar}>
 			<GallerySectionSelect onChange={(value) => dispatch(setSection(value))} value={filters.section} />
 			<div className={styles.right}>
 				<GalleryShowViralToggle onChange={(value) => dispatch(setShowViral(value))} value={filters.showViral} />

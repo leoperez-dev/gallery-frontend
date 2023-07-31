@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { GalleryAlbum, GalleryImage } from "../../components/GalleryItem/GalleryItem";
 import { GalleryFilters } from "../slices/gallerySlice";
+import { getQueryString } from "../../utils/query";
 
 export const galleryApi = createApi({
 	reducerPath: 'galleryApi',
@@ -8,10 +9,8 @@ export const galleryApi = createApi({
 	endpoints: (builder) => ({
 		getGallery: builder.query<(GalleryAlbum | GalleryImage)[], GalleryFilters>({
 			query: (filters) => {
-				const { showViral, ...restFilters } = filters;
-				return `/gallery/${Object.values(restFilters).filter(Boolean).join('/')}?showViral=${showViral}`
+				return `/gallery/?${getQueryString(filters)}`
 			},
-			// transformResponse: ({ data }) => data
 		}),
 	}),
 });

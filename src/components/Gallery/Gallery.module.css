@@ -1,28 +1,28 @@
-.GalleryContainer {
+.Gallery {
 	max-width: 1600px;
 	margin: 0 auto;
 	gap: 15px;
 }
 
 @media (min-width: 1200px) {
-	.GalleryContainer {
+	.Gallery {
 		column-count: 4;
 	}
 }
 @media (max-width: 1200px) {
-	.GalleryContainer {
+	.Gallery {
 		column-count: 3;
 	}
 }
 
 @media (max-width: 768px) {
-	.GalleryContainer {
+	.Gallery {
 		column-count: 2;
 	}
 }
 
 @media (max-width: 640px) {
-	.GalleryContainer {
+	.Gallery {
 		column-count: 1;
 	}
 }

@@ -41,7 +41,14 @@ function mapImageData(item: GalleryImage | GalleryAlbum): (GalleryImage | Galler
 			return null;
 		}
 		const { height, width, type, link } = image;
-		return { ...item, height, width, type, link };
+		
+		return {
+			...item,
+			height,
+			width,
+			type,
+			link
+		};
 	}
 	return item;
 }

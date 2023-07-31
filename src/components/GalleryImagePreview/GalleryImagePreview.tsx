@@ -7,6 +7,8 @@ const GalleryImagePreview: React.FC<GalleryVideoPreviewProps> = ({ src, mode = '
 	const lqSrc = `${src?.substring(0, src.lastIndexOf('.'))}l${src?.substring(src.lastIndexOf('.'))}`
 	const isThumbnail = mode === 'thumbnail';
 	const imageSrc = isThumbnail ? lqSrc : src;
+
+	
 	return (
 		<img
 			src={imageSrc}

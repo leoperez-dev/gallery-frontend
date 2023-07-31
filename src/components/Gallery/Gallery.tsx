@@ -27,7 +27,7 @@ const Gallery = () => {
 
 	return (
 		<div>
-			<div className={styles.GalleryContainer} ref={containerRef}>
+			<div className={styles.Gallery} ref={containerRef}>
 				{isLoading ? <h2>Loading..</h2> :
 					data.map((item) => <GalleryItem {...item} key={item.id} />)
 				}
