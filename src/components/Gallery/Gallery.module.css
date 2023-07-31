@@ -1,0 +1,24 @@
+.GalleryContainer {
+	max-width: 1600px;
+	margin: 0 auto;
+	column-count: 4;
+	gap: 15px;
+}
+
+@media (max-width: 1200px) {
+	.GalleryContainer {
+		column-count: 3;
+	}
+}
+
+@media (max-width: 768px) {
+	.GalleryContainer {
+		column-count: 2;
+	}
+}
+
+@media (max-width: 640px) {
+	.GalleryContainer {
+		column-count: 1;
+	}
+}

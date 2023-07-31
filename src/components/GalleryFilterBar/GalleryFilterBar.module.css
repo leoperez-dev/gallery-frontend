@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 0;
+	gap: 15px;
+}
+
+.right {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}

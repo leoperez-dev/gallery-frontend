@@ -1,0 +1,41 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	background-color: #111;
+	overflow: auto;
+	max-width: 350px;
+	max-height: 1024px;
+	padding: 10px;
+	margin-bottom: 15px;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.container:focus {
+	outline: 2px slateblue solid;
+	box-shadow: 2px 2px 4px slateblue;
+}
+.container:hover {
+	background-color: #000;
+}
+
+.thumbnail {
+	overflow: hidden;
+	border-radius: 15px;
+}
+
+.thumbnail img,
+.thumbnail video {
+	height: auto;
+	width: 100%;
+	object-fit: contain;
+
+}
+
+.title {
+	font-size: 18px;
+}
+
+.description {
+	font-size: 14px;
+}

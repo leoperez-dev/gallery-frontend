@@ -1,0 +1,26 @@
+
+.select {
+	appearance: unset;
+	padding: 10px;
+	padding-right: 35px;
+	border-radius: 8px;
+	border: none;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.wrapper {
+	display: inline-flex;
+	align-items: flex-start;
+	position: relative;
+}
+
+.icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 20px;
+	width: 20px;
+	pointer-events: none;
+}
