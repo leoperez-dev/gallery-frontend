@@ -1,27 +1,32 @@
-# React + TypeScript + Vite
+# Simple image gallery using the Imgur API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple SPA that connects to a [backend](https://github.com/leoperez-dev/gallery-backend) in order to fetch the images.
 
-Currently, two official plugins are available:
+[Visit deployed site](https://gallery-frontend.onrender.com/)
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Browse Imgur's gallery sections (Hot, Top, User)
+- Sort images by viral, top, time, rising (only available for user section)
+- Specify a time window (day, week, month, all) when in the Top section
+- Preview images in low quality thumbnails
+- Expand an image showing it's full resolution version, also upvotes, downvotes, and score
 
-## Expanding the ESLint configuration
+## Build instructions
+- Clone repository
+- Install dependencies `npm install`
+- Create a .env file specifying the backend url, (see .example.env)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Commands
+- start dev server `npm run dev`
+- run tests `npm run test`
+- build project `npm run build`
+- lint `npm run lint`
 
--   Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
--   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
--   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## TODO
+A list of some improvements to make given the time
+- implement a proper masonry layout
+- implement infinite scroll pagination with a virtualized list
+- implement skeleton loading for images
+- show all album images, not just the cover
+  
+  
