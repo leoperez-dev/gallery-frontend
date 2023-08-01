@@ -1,7 +1,7 @@
-export const getQueryString = <T extends Object>(object: T) => {
+export const getQueryString = <T extends object>(object: T) => {
     const params = Object.keys(object).reduce((acc, curr) => {
         const key = curr as keyof T;
-        return !!object[key]
+        return object[key]
             ? {
                   ...acc,
                   [curr]: object[key],
