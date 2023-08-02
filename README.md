@@ -21,10 +21,10 @@ Its's made using:
 -   Expand an image showing it's full resolution version, also upvotes, downvotes, and score
 
 ## Build instructions
-
--   Clone repository
--   Install dependencies `npm install`
--   Create a .env file specifying the backend url, (see .example.env)
+- Clone repository
+- Install dependencies `npm install`
+- Create a .env file specifying the backend url, (see .example.env)
+- run `npm run build`
 
 ## Commands
 
