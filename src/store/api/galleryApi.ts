@@ -10,7 +10,7 @@ import { mapImageData } from '../../utils/galleryUtils';
 
 export const galleryApi = createApi({
     reducerPath: 'galleryApi',
-    baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.VITE_API_URL }),
     endpoints: builder => ({
         getGallery: builder.query<GalleryItem[], GalleryFilters>({
             query: filters => {

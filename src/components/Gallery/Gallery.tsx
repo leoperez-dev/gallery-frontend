@@ -12,7 +12,7 @@ import useGalleryColumns from './useGalleryColumns';
 const Gallery = () => {
     const filters = useSelector((state: RootState) => state.gallery.filters);
     const dispatch = useAppDispatch();
-    const { data = [], isFetching, error } = useGetGalleryQuery(filters);
+    const { data = [], isFetching } = useGetGalleryQuery(filters);
     const columns = useGalleryColumns();
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +28,6 @@ const Gallery = () => {
         dispatch(nextPage());
         scrollToTop();
     };
-    console.log(data, error);
     
     return (
         <div>

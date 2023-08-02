@@ -1,4 +1,4 @@
-import { Skeleton } from '@mui/lab';
+import { Skeleton } from '@mui/material';
 
 const GalleryLoading = () => {
     return (
