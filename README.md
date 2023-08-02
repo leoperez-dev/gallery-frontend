@@ -42,3 +42,4 @@ A list of some improvements to make given the time
 -   implement infinite scroll pagination with a virtualized list
 -   ~~implement skeleton loading for images~~
 -   show all album images, not just the cover
+-	Implement unit tests (already setup)
