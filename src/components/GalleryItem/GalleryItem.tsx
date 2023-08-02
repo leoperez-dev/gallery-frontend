@@ -1,69 +1,59 @@
-import GalleryThumbnail from '../GalleryThumbnail/GalleryThumbnail';
+import { GalleryItem } from '../../types/galleryTypes';
+import GalleryVideoPreview from '../GalleryVideoPreview/GalleryVideoPreview';
+import GalleryImagePreview from '../GalleryImagePreview/GalleryImagePreview';
+import GalleryItemViewer from '../GalleryItemViewer/GalleryItemViewer';
+import { isVideoFormat } from '../../utils/mediaUtils';
+import {
+    Card,
+    CardActionArea,
+    CardContent,
+    Box,
+    Typography,
+} from '@mui/material';
 
-export interface GalleryItem {
-    id: string;
-    title: string;
-    description: string;
-    link: string;
-    is_album: boolean;
-    ups: number;
-    downs: number;
-    score: number;
-}
+const GalleryThumbnail = (item: GalleryItem) => {
+    const { id, title, description, link, width, type } = item;
 
-export interface Image {
-    id: string;
-    title: string;
-    description: string;
-    link: string;
-    height: number;
-    width: number;
-    type: string;
-}
-
-export interface GalleryAlbum extends GalleryItem {
-    cover: string;
-    images: Image[];
-}
-
-export type GalleryImage = GalleryItem & Image;
-
-function isAlbum(item: GalleryImage | GalleryAlbum): item is GalleryAlbum {
-    return item.is_album;
-}
-
-function mapImageData(item: GalleryImage | GalleryAlbum):
-    | ((GalleryImage | GalleryAlbum) & {
-          height: number;
-          width: number;
-          type: string;
-      })
-    | null {
-    if (isAlbum(item)) {
-        const image = item.images.find(
-            image => image.id === item.cover,
-        ) as Image;
-        //for simplicity's sake, skipping the image if it's not present in the list
-        if (!image) {
-            return null;
-        }
-        const { height, width, type, link } = image;
-
-        return {
-            ...item,
-            height,
-            width,
-            type,
-            link,
-        };
-    }
-    return item;
-}
-
-const GalleryItem = (item: GalleryImage | GalleryAlbum) => {
-    const imageData = mapImageData(item);
-
-    return imageData && <GalleryThumbnail {...imageData} />;
+    return (
+        <GalleryItemViewer item={item}>
+            <CardActionArea
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    borderRadius: 4,
+                    overflow: 'hidden',
+                }}
+            >
+                <Card sx={{ width: '100%' }}>
+                    <CardContent
+                        sx={{
+                            padding: 0,
+                            paddingBottom: 0,
+                            ':last-child': { paddingBottom: 0 },
+                        }}
+                    >
+                        <Box key={id} sx={{ overflow: 'hidden' }}>
+                            {isVideoFormat(type) ? (
+                                <GalleryVideoPreview width={width} src={link} />
+                            ) : (
+                                <GalleryImagePreview
+                                    src={link}
+                                    alt={title}
+                                    width={width}
+                                />
+                            )}
+                        </Box>
+                        <Box sx={{ padding: 2 }}>
+                            {title && (
+                                <Typography variant="h6">{title}</Typography>
+                            )}
+                            {description && <p>{description}</p>}
+                        </Box>
+                    </CardContent>
+                </Card>
+            </CardActionArea>
+        </GalleryItemViewer>
+    );
 };
 
-export default GalleryItem;
+export default GalleryThumbnail;

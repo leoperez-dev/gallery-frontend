@@ -1,3 +1,5 @@
+import { Switch, FormControlLabel } from '@mui/material';
+
 export interface GalleryShowViralToggleProps {
     onChange: (value: boolean) => void;
     value?: boolean;
@@ -8,15 +10,16 @@ const GalleryShowViralToggle: React.FC<GalleryShowViralToggleProps> = ({
     onChange,
 }) => {
     return (
-        <label htmlFor="showViral">
-            <input
-                id="showViral"
-                type="checkbox"
-                checked={value}
-                onChange={e => onChange(e.target.checked)}
-            />
-            <span>Show viral</span>
-        </label>
+        <FormControlLabel
+            labelPlacement="start"
+            label="Show viral"
+            control={
+                <Switch
+                    checked={value}
+                    onChange={e => onChange(e.target.checked)}
+                />
+            }
+        />
     );
 };
 

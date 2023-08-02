@@ -1,6 +1,5 @@
-import styles from './GalleryPagination.module.css';
-import Button from '../Button/Button';
-import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { IconButton } from '@mui/material';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 interface GalleryPaginationProps {
     showPrevious: boolean;
@@ -16,20 +15,27 @@ const GalleryPagination = ({
     onNext,
 }: GalleryPaginationProps) => {
     return (
-        <div className={styles.GalleryPagination}>
+        <div
+            style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                margin: '15px 0',
+                padding: '15px',
+            }}
+        >
             <span>
                 {showPrevious && (
-                    <Button onClick={onPrevious}>
-                        <ArrowLeftIcon height={50} width={50} />
-                    </Button>
+                    <IconButton onClick={onPrevious}>
+                        <ArrowBack sx={{ height: 50, width: 50 }} />
+                    </IconButton>
                 )}
             </span>
             <span>
                 {showNext && (
-                    <Button onClick={onNext}>
+                    <IconButton onClick={onNext}>
                         {' '}
-                        <ArrowRightIcon height={50} width={50} />
-                    </Button>
+                        <ArrowForward sx={{ height: 50, width: 50 }} />
+                    </IconButton>
                 )}
             </span>
         </div>

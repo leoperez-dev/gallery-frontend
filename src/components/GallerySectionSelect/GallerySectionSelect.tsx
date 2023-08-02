@@ -1,5 +1,5 @@
 import { GallerySectionFilter } from '../../store/slices/gallerySlice';
-import { Select, Option } from '../Select/Select';
+import { Select, MenuItem } from '@mui/material';
 
 export interface GallerySectionSelectProps {
     onChange: (value: GallerySectionFilter) => void;
@@ -15,9 +15,9 @@ const GallerySectionSelect: React.FC<GallerySectionSelectProps> = ({
             value={value}
             onChange={e => onChange(e.target.value as GallerySectionFilter)}
         >
-            <Option value="hot">Hot</Option>
-            <Option value="top">Top</Option>
-            <Option value="user">User</Option>
+            <MenuItem value="hot">Hot</MenuItem>
+            <MenuItem value="top">Top</MenuItem>
+            <MenuItem value="user">User</MenuItem>
         </Select>
     );
 };

@@ -2,17 +2,34 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 import GalleryFilterBar from './components/GalleryFilterBar/GalleryFilterBar';
 import Gallery from './components/Gallery/Gallery';
-import styles from './App.module.css';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 
 function App() {
     return (
         <div>
-            <h1 className={styles.Title}>My Image Gallery</h1>
-            <h2 className={styles.Subtitle}>
-                Simple mage gallery created using the imgur.com API
-            </h2>
-            <GalleryFilterBar />
-            <Gallery />
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ flexGrow: 1 }}
+                    >
+                        Example Image gallery
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <div
+                style={{
+                    maxWidth: 1500,
+                    padding: '0 15px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    margin: '0 auto',
+                }}
+            >
+                <GalleryFilterBar />
+                <Gallery />
+            </div>
         </div>
     );
 }

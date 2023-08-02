@@ -6,6 +6,7 @@ interface GalleryVideoPreviewProps
 const GalleryVideoPreview: React.FC<GalleryVideoPreviewProps> = ({
     src,
     mode = 'thumbnail',
+    style,
     ...restProps
 }) => {
     //get low quality poster image to minimize layout reflow
@@ -28,6 +29,12 @@ const GalleryVideoPreview: React.FC<GalleryVideoPreviewProps> = ({
             muted={isThumbnail}
             loop={isThumbnail}
             poster={poster}
+            style={{
+                objectFit: 'contain',
+                width: '100%',
+                height: 'auto',
+                ...style,
+            }}
             {...restProps}
         />
     );

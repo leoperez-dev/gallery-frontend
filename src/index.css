@@ -1,6 +1,4 @@
 :root {
-    --primary: rgb(235, 132, 255);
-
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -14,22 +12,8 @@
     -webkit-text-size-adjust: 100%;
 }
 
-button,
-fieldset {
-    all: unset;
-}
-
 body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
-}
-
-#root {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 0 25px;
-    max-width: 1500px;
 }

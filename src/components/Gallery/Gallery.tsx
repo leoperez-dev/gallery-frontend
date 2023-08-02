@@ -2,15 +2,18 @@ import { useSelector } from 'react-redux';
 import { useGetGalleryQuery } from '../../store/api/galleryApi';
 import { RootState, useAppDispatch } from '../../store/store';
 import { previousPage, nextPage } from '../../store/slices/gallerySlice';
+import { useRef } from 'react';
+import { Masonry } from '@mui/lab';
 import GalleryItem from '../GalleryItem/GalleryItem';
 import GalleryPagination from '../GalleryPagination/GalleryPagination';
-import styles from './Gallery.module.css';
-import { useRef } from 'react';
+import GalleryLoading from './GalleryLoading';
+import useGalleryColumns from './useGalleryColumns';
 
 const Gallery = () => {
     const filters = useSelector((state: RootState) => state.gallery.filters);
     const dispatch = useAppDispatch();
-    const { data = [], isLoading } = useGetGalleryQuery(filters);
+    const { data = [], isFetching, error } = useGetGalleryQuery(filters);
+    const columns = useGalleryColumns();
     const containerRef = useRef<HTMLDivElement>(null);
 
     const scrollToTop = () =>
@@ -25,16 +28,23 @@ const Gallery = () => {
         dispatch(nextPage());
         scrollToTop();
     };
-
+    console.log(data, error);
+    
     return (
         <div>
-            <div className={styles.Gallery} ref={containerRef}>
-                {isLoading ? (
-                    <h2>Loading..</h2>
-                ) : (
-                    data.map(item => <GalleryItem {...item} key={item.id} />)
-                )}
-                {!data.length && !isLoading && <h2>No results to show.</h2>}
+            <div ref={containerRef}>
+                {!data.length && !isFetching && <h2>No results to show.</h2>}
+                <Masonry columns={columns} spacing={2}>
+                    {isFetching ? (
+                        <GalleryLoading />
+                    ) : (
+                        data.map(item => (
+                            <div key={item.id} style={{ minWidth: 250 }}>
+                                <GalleryItem {...item} />
+                            </div>
+                        ))
+                    )}
+                </Masonry>
             </div>
             <GalleryPagination
                 showPrevious={!!filters.page}

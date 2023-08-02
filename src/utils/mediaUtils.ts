@@ -8,3 +8,5 @@ export const videoFormats = [
     'video/x-ms-wmv',
     'video/mpeg',
 ];
+
+export const isVideoFormat = (format: string) => videoFormats.includes(format);

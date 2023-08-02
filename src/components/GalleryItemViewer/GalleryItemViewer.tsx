@@ -1,22 +1,14 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import {
-    Cross2Icon,
-    ThickArrowUpIcon,
-    ThickArrowDownIcon,
-    BarChartIcon,
-} from '@radix-ui/react-icons';
-import styles from './GalleryItemViewer.module.css';
-import { GalleryAlbum, GalleryImage } from '../GalleryItem/GalleryItem';
+import { GalleryItem } from '../../types/galleryTypes';
 import GalleryImagePreview from '../GalleryImagePreview/GalleryImagePreview';
 import GalleryVideoPreview from '../GalleryVideoPreview/GalleryVideoPreview';
-import { videoFormats } from '../../utils/videoFormats';
+import { isVideoFormat } from '../../utils/mediaUtils';
+import { Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
+import { useState } from 'react';
+import GalleryItemViewerStats from './GalleryItemViewerStats';
+import { Close } from '@mui/icons-material';
 
 interface GalleryItemViewerProps {
-    item: (GalleryImage | GalleryAlbum) & {
-        height: number;
-        width: number;
-        type: string;
-    };
+    item: GalleryItem;
     children: React.ReactNode;
 }
 
@@ -27,32 +19,31 @@ const GalleryItemViewer: React.FC<GalleryItemViewerProps> = ({
     const { title, description, type, width, height, link, ups, downs, score } =
         item;
 
-    return (
-        <Dialog.Root>
-            <Dialog.Trigger asChild>{children}</Dialog.Trigger>
-            <Dialog.Portal>
-                <Dialog.Overlay className={styles.DialogOverlay} />
-                <Dialog.Content className={styles.DialogContent}>
-                    {title && (
-                        <Dialog.Title className={styles.DialogTitle}>
-                            {title}
-                        </Dialog.Title>
-                    )}
-                    {description && (
-                        <Dialog.Description
-                            className={styles.DialogDescription}
-                        >
-                            {description}
-                        </Dialog.Description>
-                    )}
+    const [open, setIsOpen] = useState(false);
 
-                    {videoFormats.includes(type) ? (
+    return (
+        <div>
+            <div onClick={() => setIsOpen(true)}>{children}</div>
+            <Dialog open={open} onClose={() => setIsOpen(false)}>
+                <DialogContent
+                    style={{ display: 'flex', flexDirection: 'column' }}
+                >
+                    {title && (
+                        <DialogTitle style={{ paddingLeft: 0 }}>
+                            {title}
+                        </DialogTitle>
+                    )}
+                    {description && <p>{description}</p>}
+
+                    {isVideoFormat(type) ? (
                         <GalleryVideoPreview
                             width={width}
                             height={height}
                             src={link}
-                            className={styles.Preview}
                             mode="full"
+                            style={{
+                                overflow: 'hidden',
+                            }}
                         />
                     ) : (
                         <GalleryImagePreview
@@ -60,41 +51,28 @@ const GalleryItemViewer: React.FC<GalleryItemViewerProps> = ({
                             alt={title}
                             width={width}
                             height={height}
-                            className={styles.Preview}
                             mode="full"
+                            style={{
+                                overflow: 'hidden',
+                            }}
                         />
                     )}
 
-                    <div className={styles.StatsBar}>
-                        <div className={styles.StatsBarContent}>
-                            <ThickArrowUpIcon height={20} width={20} />
-                            <span className={styles.StatsBarLabel}>{ups}</span>
-                        </div>
-                        <div className={styles.StatsBarContent}>
-                            <ThickArrowDownIcon height={20} width={20} />
-                            <span className={styles.StatsBarLabel}>
-                                {downs}
-                            </span>
-                        </div>
-                        <div className={styles.StatsBarContent}>
-                            <BarChartIcon height={20} width={20} />
-                            <span className={styles.StatsBarLabel}>
-                                {score}
-                            </span>
-                        </div>
-                    </div>
+                    <GalleryItemViewerStats
+                        ups={ups}
+                        downs={downs}
+                        score={score}
+                    />
 
-                    <Dialog.Close asChild>
-                        <button
-                            className={styles.CloseButton}
-                            aria-label="Close"
-                        >
-                            <Cross2Icon height={20} width={20} />
-                        </button>
-                    </Dialog.Close>
-                </Dialog.Content>
-            </Dialog.Portal>
-        </Dialog.Root>
+                    <IconButton
+                        style={{ position: 'absolute', top: 25, right: 25 }}
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <Close />
+                    </IconButton>
+                </DialogContent>
+            </Dialog>
+        </div>
     );
 };
 

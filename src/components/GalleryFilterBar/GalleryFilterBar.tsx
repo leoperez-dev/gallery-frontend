@@ -10,7 +10,6 @@ import GallerySectionSelect from '../GallerySectionSelect/GallerySectionSelect';
 import GalleryShowViralToggle from '../GalleryShowViralToggle/GalleryShowViralToggle';
 import GallerySortSelect from '../GallerySortSelect/GallerySortSelect';
 import GalleryWindowSelect from '../GalleryWindowSelect/GalleryWindowSelect';
-import styles from './GalleryFilterBar.module.css';
 
 const GalleryFilterBar: React.FC = () => {
     const filters = useSelector((state: RootState) => state.gallery.filters);
@@ -21,12 +20,25 @@ const GalleryFilterBar: React.FC = () => {
     const showRising = filters.section === 'user';
 
     return (
-        <div className={styles.GalleryFilterBar}>
+        <div
+            style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '25px 0',
+                gap: '15px',
+            }}
+        >
             <GallerySectionSelect
                 onChange={value => dispatch(setSection(value))}
                 value={filters.section}
             />
-            <div className={styles.right}>
+            <div
+                style={{
+                    display: 'flex',
+                    gap: 20,
+                    alignItems: 'center',
+                }}
+            >
                 <GalleryShowViralToggle
                     onChange={value => dispatch(setShowViral(value))}
                     value={filters.showViral}

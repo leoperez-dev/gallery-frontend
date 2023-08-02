@@ -1,5 +1,5 @@
 import { GallerySortFilter } from '../../store/slices/gallerySlice';
-import { Select, Option } from '../Select/Select';
+import { Select, MenuItem } from '@mui/material';
 
 export interface GallerySortSelectProps {
     onChange: (value: GallerySortFilter) => void;
@@ -17,10 +17,10 @@ const GallerySortSelect: React.FC<GallerySortSelectProps> = ({
             value={value}
             onChange={e => onChange(e.target.value as GallerySortFilter)}
         >
-            <Option value="viral">Viral</Option>
-            <Option value="top">Top</Option>
-            <Option value="time">Time</Option>
-            {showRising && <Option value="rising">Rising</Option>}
+            <MenuItem value="viral">Viral</MenuItem>
+            <MenuItem value="top">Top</MenuItem>
+            <MenuItem value="time">Time</MenuItem>
+            {showRising && <MenuItem value="rising">Rising</MenuItem>}
         </Select>
     );
 };
